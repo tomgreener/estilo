@@ -1,6 +1,7 @@
 // Variables
+@import "layout";
 
-$gutter: 30px !default;
+$gutter: $horizontal-base !default;
 
 // Helpers
 
@@ -13,13 +14,9 @@ $gutter: 30px !default;
 }
 
 @mixin grid-container {
-  max-width: 1200px;
   display: flex;
-  flex-wrap: wrap;
   margin-left: -$gutter/2;
   margin-right: -$gutter/2;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 @mixin grid-item($width: 1, $offset-left: 0, $offset-right: 0) {
@@ -27,3 +24,13 @@ $gutter: 30px !default;
   margin-left: _offset-from-fraction($offset-left);
   margin-right: _offset-from-fraction($offset-right);
 }
+
+// @include grid-item(1);
+      
+// @include breakpoint(medium) { 
+//     @include grid-item(1/3);
+// }
+
+// @include breakpoint(large) { 
+//     @include grid-item(1/6);
+// }

@@ -2,8 +2,9 @@
 @import "vendor/normalize";
 
 // Modules
+@import "modules/colours";
 @import "modules/layout";
 @import "modules/grid";
-@import "modules/typography";
 @import "modules/fonts";
-@import "modules/colours";
+@import "modules/typography";
+@import "modules/forms";

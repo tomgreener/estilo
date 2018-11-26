@@ -1,17 +1,26 @@
 // Variables
+@import "typography";
 
-$horizontal: 20px !default;
-$breakpoints: (medium: 640px, large: 960px) !default;
+$horizontal-base: 1.5rem !default;
+$vertical-base: 1.5rem !default;
+
+$breakpoints: (
+  medium: 640px,
+  large: 960px
+) !default;
 $max-width: 1200px !default;
 
-// 
+// Helpers
 
 @mixin page-container {
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding-left: $gutter;
-  padding-right: $gutter;
+  margin: 0 auto;  
+  max-width: $max-width;
+  overflow-x: hidden;
+}
+
+@mixin content-container {
+  padding-left: $horizontal-base;
+  padding-right: $horizontal-base;
 }
 
 @mixin breakpoint($size) {

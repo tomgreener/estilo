@@ -1,26 +1,27 @@
 // Variables
+@import "layout";
 
-$baseline: 16px !default;
+$font-base: 16px !default;
 $max-line-length: 38em !default;
 
 $font-sizes: (
+    xx-large: (
+        default: ( font-size: 5.063rem, line-height: $vertical-base * 3)
+    ),
     x-large: (
-        null: ( font-size: 1.75rem, line-height: 1.25),
-        medium: ( font-size: 2rem ),
+        default: ( font-size: 3.375rem, line-height: $vertical-base * 3)
     ),
     large: (
-        null: ( font-size: 1.375rem, line-height: 1.25),
-        medium: ( font-size: 1.5rem ),
+        default: ( font-size: 2.25rem, line-height: $vertical-base * 2)
     ),
     medium: (
-        null: ( font-size: 1.125rem, line-height: 1.5),
-        medium: ( font-size: 1.25rem, line-height: 1.25 ),
+        default: ( font-size: 1.5rem, line-height: $vertical-base * 2)
     ),
     default: (
-        null: ( font-size: 1rem, line-height: 1.5)
+        default: ( font-size: 1rem, line-height: $vertical-base)
     ),
     small: (
-        null: ( font-size: 0.875rem, line-height: 1.5)
+        default: ( font-size: 0.667rem, line-height: $vertical-base)
     ),
 ) !default;
 
@@ -39,7 +40,7 @@ $font-sizes: (
     $font-size: map-get($font-sizes, $size);
 
     @each $breakpoint, $properties in $font-size {
-        @if $breakpoint == null {
+        @if $breakpoint == 'default' {
             @include _set-font-properties($properties);
         } @else {
             @include breakpoint($breakpoint) {
@@ -52,29 +53,40 @@ $font-sizes: (
 // Global
 
 html {
-    font-size: $baseline;
+    font-size: $font-base;
+}
+
+body {
+    @include font-size(default);
 }
 
 h1 {
     @include font-size(x-large);
+    margin-top: $vertical-base * 3;
+    margin-bottom: $vertical-base;
 }
 
 h2 {
     @include font-size(large);
+    margin-top: $vertical-base * 2;
+    margin-bottom: $vertical-base;
 }
 
 h3 {
     @include font-size(medium);
+    margin-top: $vertical-base;
+    margin-bottom: $vertical-base;
 }
 
 h4, h5, h6 {
     @include font-size(default);
-}
-
-body, p {
-    @include font-size(default);
+    margin-top: $vertical-base;
+    margin-bottom: $vertical-base;
 }
 
 p {
+    @include font-size(default);
+    margin-top: $vertical-base;
+    margin-bottom: $vertical-base;
     max-width: $max-line-length;
 }

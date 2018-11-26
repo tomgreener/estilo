@@ -1,0 +1,17 @@
+// Global
+@import "layout";
+
+form {
+    margin-top: $vertical-base * 2;
+    margin-bottom: $vertical-base * 2;
+}
+
+label {
+    margin-top: $vertical-base * 2;
+    margin-bottom: $vertical-base;
+}
+
+input, textarea, select, option, button, fieldset {
+    margin-top: $vertical-base;
+    margin-bottom: $vertical-base;
+}
