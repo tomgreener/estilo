@@ -1,0 +1,29 @@
+// Variables
+
+$gutter: 30px !default;
+
+// Helpers
+
+@function _width-from-fraction($fraction) {
+  @return calc((100%*#{$fraction}) - #{$gutter});
+}
+
+@function _offset-from-fraction($fraction) {
+  @return calc((100%*#{$fraction}) + #{$gutter/2});
+}
+
+@mixin grid-container {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$gutter/2;
+  margin-right: -$gutter/2;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+@mixin grid-item($width: 1, $offset-left: 0, $offset-right: 0) {
+  width: _width-from-fraction($width);
+  margin-left: _offset-from-fraction($offset-left);
+  margin-right: _offset-from-fraction($offset-right);
+}

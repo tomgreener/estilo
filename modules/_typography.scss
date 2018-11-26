@@ -1,0 +1,80 @@
+// Variables
+
+$baseline: 16px !default;
+$max-line-length: 38em !default;
+
+$font-sizes: (
+    x-large: (
+        null: ( font-size: 1.75rem, line-height: 1.25),
+        medium: ( font-size: 2rem ),
+    ),
+    large: (
+        null: ( font-size: 1.375rem, line-height: 1.25),
+        medium: ( font-size: 1.5rem ),
+    ),
+    medium: (
+        null: ( font-size: 1.125rem, line-height: 1.5),
+        medium: ( font-size: 1.25rem, line-height: 1.25 ),
+    ),
+    default: (
+        null: ( font-size: 1rem, line-height: 1.5)
+    ),
+    small: (
+        null: ( font-size: 0.875rem, line-height: 1.5)
+    ),
+) !default;
+
+// Helpers
+
+@mixin _set-font-properties($font-map) {
+    @if map-has-key($font-map, font-size) {
+        font-size: map-get($font-map, font-size);
+    }
+    @if map-has-key($font-map, line-height) {
+        line-height: map-get($font-map, line-height);
+    }
+}
+
+@mixin font-size($size: default) {
+    $font-size: map-get($font-sizes, $size);
+
+    @each $breakpoint, $properties in $font-size {
+        @if $breakpoint == null {
+            @include _set-font-properties($properties);
+        } @else {
+            @include breakpoint($breakpoint) {
+                @include _set-font-properties($properties);
+            }
+        }       
+    }
+}
+
+// Global
+
+html {
+    font-size: $baseline;
+}
+
+h1 {
+    @include font-size(x-large);
+}
+
+h2 {
+    @include font-size(large);
+}
+
+h3 {
+    @include font-size(medium);
+}
+
+h4, h5, h6 {
+    @include font-size(default);
+}
+
+body, p {
+    @include font-size(default);
+}
+
+p {
+    max-width: $max-line-length;
+}
