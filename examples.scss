@@ -1,0 +1,38 @@
+// @import "./modules/layout";
+
+$horizontal-base: 24px;
+$max-width: 1200px;
+
+@mixin page-container {
+  margin: 0 auto;  
+  max-width: $max-width;
+  overflow-x: hidden;
+}
+
+@mixin content-container {
+  padding-left: $horizontal-base;
+  padding-right: $horizontal-base;
+}
+
+.full-width {
+  background: red;
+  width: 100%;
+  height: 60px;
+}
+
+.full-width-content {
+  @include content-container;
+
+  background: blue;
+  color: white;
+  width: 100%;
+  height: 60px;
+}
+
+.hero {
+  @include page-container;
+  @include content-container;
+
+  background: paleturquoise;
+  color: navy;
+}

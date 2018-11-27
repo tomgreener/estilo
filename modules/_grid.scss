@@ -13,7 +13,7 @@ $gutter: $horizontal-base !default;
   @return calc((100%*#{$fraction}) + #{$gutter/2});
 }
 
-@mixin grid-container {
+%grid-container {
   display: flex;
   margin-left: -$gutter/2;
   margin-right: -$gutter/2;

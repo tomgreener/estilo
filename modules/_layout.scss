@@ -12,15 +12,31 @@ $max-width: 1200px !default;
 
 // Helpers
 
-@mixin page-container {
+%max-width {
   margin: 0 auto;  
   max-width: $max-width;
   overflow-x: hidden;
 }
 
-@mixin content-container {
+%full-width {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+%content-container {
   padding-left: $horizontal-base;
   padding-right: $horizontal-base;
+}
+
+%max-width-content {
+  @extend %max-width;
+  @extend %content-container;
+}
+
+%full-width-content {
+  @extend %full-width;
+  @extend %content-container;
 }
 
 @mixin breakpoint($size) {
@@ -53,3 +69,6 @@ img {
   max-width:100%;
   height:auto;
 }
+
+// section {
+// }
